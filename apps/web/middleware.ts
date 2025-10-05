@@ -1,49 +1,69 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import { signToken, verifyToken } from '@/lib/auth/session';
+import { NextRequest, NextResponse } from 'next/server'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
-const protectedRoutes = '/dashboard';
+const PROTECTED_PREFIX = '/dashboard'
+const AUTH_PAGES = ['/sign-in', '/sign-up']
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const sessionCookie = request.cookies.get('session');
-  const isProtectedRoute = pathname.startsWith(protectedRoutes);
+export async function middleware(req: NextRequest) {
+	const res = NextResponse.next()
 
-  if (isProtectedRoute && !sessionCookie) {
-    return NextResponse.redirect(new URL('/sign-in', request.url));
-  }
+	const supabase = createServerClient(
+		process.env.NEXT_PUBLIC_SUPABASE_URL!,
+		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+		{
+			cookies: {
+				get(name: string) {
+					return req.cookies.get(name)?.value
+				},
+				set(name: string, value: string, options: CookieOptions) {
+					res.cookies.set({ name, value, ...options })
+				},
+				remove(name: string, options: CookieOptions) {
+					res.cookies.set({ name, value: '', ...options, maxAge: 0 })
+				},
+			},
+		}
+	)
 
-  let res = NextResponse.next();
+	let session = null
+	try {
+		const {
+			data: { session: authSession },
+		} = await supabase.auth.getSession()
+		session = authSession
+	} catch (error) {
+		console.error('Middleware auth error:', error)
+		session = null
+	}
 
-  if (sessionCookie && request.method === 'GET') {
-    try {
-      const parsed = await verifyToken(sessionCookie.value);
-      const expiresInOneDay = new Date(Date.now() + 24 * 60 * 60 * 1000);
+	const pathname = req.nextUrl.pathname
+	const isProtected = pathname.startsWith(PROTECTED_PREFIX)
+	const isAuthPage = AUTH_PAGES.includes(pathname)
 
-      res.cookies.set({
-        name: 'session',
-        value: await signToken({
-          ...parsed,
-          expires: expiresInOneDay.toISOString()
-        }),
-        httpOnly: true,
-        secure: true,
-        sameSite: 'lax',
-        expires: expiresInOneDay
-      });
-    } catch (error) {
-      console.error('Error updating session:', error);
-      res.cookies.delete('session');
-      if (isProtectedRoute) {
-        return NextResponse.redirect(new URL('/sign-in', request.url));
-      }
-    }
-  }
+	// Unauthed access to protected pages -> sign-in
+	if (!session && isProtected) {
+		const url = req.nextUrl.clone()
+		url.pathname = '/sign-in'
+		url.searchParams.set('redirect', req.nextUrl.pathname + req.nextUrl.search)
+		return NextResponse.redirect(url)
+	}
 
-  return res;
+	// Authed access to auth pages -> respect redirect param if present, else dashboard
+	if (session && isAuthPage) {
+		const url = req.nextUrl.clone()
+		const redirectParam = url.searchParams.get('redirect')
+		const destination =
+			redirectParam && redirectParam.startsWith('/')
+				? redirectParam
+				: '/dashboard'
+		url.pathname = destination
+		url.search = ''
+		return NextResponse.redirect(url)
+	}
+
+	return res
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-  runtime: 'nodejs'
-};
+	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+}

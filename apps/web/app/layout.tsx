@@ -2,11 +2,12 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Manrope } from 'next/font/google';
 import { getUser, getTeamForUser } from '@/lib/db/queries';
-import { SWRConfig } from 'swr';
+import { SWRProvider } from '@/components/swr-provider';
+import SessionProvider from '@/components/session-provider';
 
 export const metadata: Metadata = {
-  title: 'Next.js SaaS Starter',
-  description: 'Get started quickly with Next.js, Postgres, and Stripe.'
+  title: 'Synthatar - AI Avatar Generator',
+  description: 'Create stunning AI avatars in seconds. Transform your digital identity with cutting-edge AI technology.'
 };
 
 export const viewport: Viewport = {
@@ -15,29 +16,31 @@ export const viewport: Viewport = {
 
 const manrope = Manrope({ subsets: ['latin'] });
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  // Fetch initial data on the server
+  const [user, team] = await Promise.all([
+    getUser(),
+    getTeamForUser()
+  ]);
+  
   return (
     <html
       lang="en"
-      className={`bg-white dark:bg-gray-950 text-black dark:text-white ${manrope.className}`}
+      className={manrope.className}
     >
-      <body className="min-h-[100dvh] bg-gray-50">
-        <SWRConfig
-          value={{
-            fallback: {
-              // We do NOT await here
-              // Only components that read this data will suspend
-              '/api/user': getUser(),
-              '/api/team': getTeamForUser()
-            }
+      <body className="min-h-[100dvh]">
+        <SWRProvider
+          fallback={{
+            '/api/user': user,
+            '/api/team': team
           }}
         >
-          {children}
-        </SWRConfig>
+          <SessionProvider>{children}</SessionProvider>
+        </SWRProvider>
       </body>
     </html>
   );

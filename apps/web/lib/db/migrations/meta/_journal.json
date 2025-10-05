@@ -5,8 +5,22 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1726443359662,
-      "tag": "0000_soft_the_anarchist",
+      "when": 1757499156582,
+      "tag": "0000_jittery_hex",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1757499356980,
+      "tag": "0001_fast_cerebro",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757499622786,
+      "tag": "0002_classy_rattler",
       "breakpoints": true
     }
   ]

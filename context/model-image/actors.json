@@ -1,0 +1,134 @@
+[
+  {
+    "key": "black_woman_home_01",
+    "display_name": "Sarah - At Home",
+    "filename": "black-women-in-home.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/black-women-in-home.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "25-35",
+    "gender": "female",
+    "tags": ["home", "casual", "indoor"]
+  },
+  {
+    "key": "black_girl_beach_01",
+    "display_name": "Maya - Beach Vibes",
+    "filename": "black-young-gril-at-beach.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/black-young-gril-at-beach.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "18-25",
+    "gender": "female",
+    "tags": ["beach", "outdoor", "casual", "young"]
+  },
+  {
+    "key": "man_bodybuilding_mic_01",
+    "display_name": "Marcus - Fitness Coach",
+    "filename": "men-bodybuiling-talking-on-mic.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/men-bodybuiling-talking-on-mic.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "25-35",
+    "gender": "male",
+    "tags": ["fitness", "professional", "microphone", "coaching"]
+  },
+  {
+    "key": "middle_age_man_office_01",
+    "display_name": "David - Business Executive",
+    "filename": "middle-age-men-at-office.jpg",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/middle-age-men-at-office.jpg",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "35-45",
+    "gender": "male",
+    "tags": ["office", "professional", "business", "corporate"]
+  },
+  {
+    "key": "middle_age_man_office_02",
+    "display_name": "Robert - Office Manager",
+    "filename": "middle-age-men-in-office.jpg",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/middle-age-men-in-office.jpg",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "35-45",
+    "gender": "male",
+    "tags": ["office", "professional", "business", "management"]
+  },
+  {
+    "key": "young_boy_beach_01",
+    "display_name": "Alex - Beach Guy",
+    "filename": "young-boy-at-beach.jpg",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-boy-at-beach.jpg",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "18-25",
+    "gender": "male",
+    "tags": ["beach", "outdoor", "casual", "young"]
+  },
+  {
+    "key": "young_boy_dorm_01",
+    "display_name": "Tyler - College Student",
+    "filename": "young-boy-at-dorm-collage.webp",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-boy-at-dorm-collage.webp",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "18-22",
+    "gender": "male",
+    "tags": ["college", "dorm", "student", "young", "education"]
+  },
+  {
+    "key": "young_cowgirl_01",
+    "display_name": "Jessica - Country Girl",
+    "filename": "young-cowgirl-outside.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-cowgirl-outside.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "20-28",
+    "gender": "female",
+    "tags": ["outdoor", "country", "western", "casual"]
+  },
+  {
+    "key": "young_girl_car_01",
+    "display_name": "Emma - Road Trip",
+    "filename": "young-girl-in-the-car-.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-girl-in-the-car-.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "20-28",
+    "gender": "female",
+    "tags": ["car", "travel", "casual", "young"]
+  },
+  {
+    "key": "young_girl_fitness_01",
+    "display_name": "Sophia - Fitness Enthusiast",
+    "filename": "young-girl-lift.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-girl-lift.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "22-30",
+    "gender": "female",
+    "tags": ["fitness", "gym", "active", "workout"]
+  },
+  {
+    "key": "young_girl_model_01",
+    "display_name": "Olivia - Fashion Model",
+    "filename": "young-girl-model-room.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/young-girl-model-room.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "age_range": "20-28",
+    "gender": "female",
+    "tags": ["fashion", "model", "indoor", "professional"]
+  },
+  {
+    "key": "young_black_boy_desk_01",
+    "display_name": "Jordan - Content Creator",
+    "filename": "younh-black-boy-at-setup-desk.png",
+    "image_url": "https://qlfekjubqwpnspfocjkz.supabase.co/storage/v1/object/public/actor-models/younh-black-boy-at-setup-desk.png",
+    "voice_provider": "fal.ai",
+    "voice_id": "nPczCjzI2devNBz1zQrb",
+    "age_range": "18-25",
+    "gender": "male",
+    "tags": ["desk", "creator", "setup", "young", "tech"]
+  }
+]
