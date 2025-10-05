@@ -1,0 +1,8 @@
+export { default as Footer } from './footer'
+export { default as FooterCTA } from './footer-cta'
+export { default as FooterBrand } from './footer-brand'
+export { default as FooterColumn } from './footer-column'
+export { default as FooterBottom } from './footer-bottom'
+export { default as FooterAccordion } from './footer-accordion'
+export { default as NewsletterForm } from './footer-newsletter'
+export { default as SocialLinks } from './footer-social'
